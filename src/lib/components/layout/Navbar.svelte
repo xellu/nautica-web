@@ -63,8 +63,8 @@
 
     const RESOURCES = [
         {url: "#", name: "Documentation"},
-        {url: "#", name: "Releases"},
-        {url: "#", name: "Github"},    
+        {url: "https://github.com/xellu/nautica-api/releases", name: "Releases"},
+        {url: "https://github.com/xellu/nautica-api", name: "GitHub"},    
     ]
 
     const QUICK_REF = [
@@ -240,14 +240,14 @@
             <div class="flex flex-col gap-1 prevent-close">
                 <h3 class="font-serif italic mb-3 prevent-close text-white/70">Resources</h3>
                 {#each RESOURCES as l}
-                    <a href="{l.url}" class="hover:underline prevent-close text-xl">{l.name}</a>
+                    <a href="{l.url}" target={l.url.includes("github") ? '_blank' : '_self'} class="hover:underline prevent-close text-xl">{l.name}</a>
                 {/each}
             </div>
 
             <div class="flex flex-col gap-1 prevent-close">
                 <h3 class="font-serif italic mb-3 prevent-close text-white/70">Quick References</h3>
                 {#each QUICK_REF as l}
-                    <a href="{l.url}" class="hover:underline prevent-close text-xl">{l.name}</a>
+                    <a href="{l.url}" target={l.url.includes("xellu") ? '_blank' : '_self'} class="hover:underline prevent-close text-xl">{l.name}</a>
                 {/each}
             </div>
         {/if}

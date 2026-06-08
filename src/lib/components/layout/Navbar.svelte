@@ -1,5 +1,4 @@
 <script lang="ts">
-    import * as HoverCard from "$lib/components/ui/hover-card/index";
     import Button from "../ui/button/button.svelte";
 
     import { onMount } from "svelte";
@@ -20,13 +19,13 @@
     const LINKS = [
         {
             url: "#",
-            name: "Product",
-            id: "product"
+            name: "Why Nautica",
+            id: "why"
         },
         {
             url: "#",
-            name: "Why Nautica",
-            id: "why"
+            name: "Product",
+            id: "product"
         },
         {
             url: "#",
@@ -46,6 +45,32 @@
         {url: "#", name: "Nautica vs FastAPI"},
         {url: "#", name: "Nautica vs Flask"},
         {url: "#", name: "Nautica vs Django"}
+    ]
+
+    const FEATURES_1 = [
+        {url: "#", name: "Plugins"},
+        {url: "#", name: "HTTP Server"},
+        {url: "#", name: "Logging"},
+        {url: "#", name: "Scheduling"},
+    ]
+
+    const FEATURES_2 = [
+        {url: "#", name: "Runtime Management"},
+        {url: "#", name: "Web Sockets"},
+        {url: "#", name: "Config System"},
+        {url: "#", name: "Interface"},
+    ]
+
+    const RESOURCES = [
+        {url: "#", name: "Documentation"},
+        {url: "#", name: "Releases"},
+        {url: "#", name: "Github"},    
+    ]
+
+    const QUICK_REF = [
+        {url: "#", name: "Get Started"},
+        {url: "#", name: "Installation"},
+        {url: "https://napm.xellu.xyz/", name: "Package Registry"},
     ]
 
     onMount(() => {
@@ -136,19 +161,19 @@
     </div>
 
 
-    <div class="pl-8 col-span-3 flex h-64 gap-16 prevent-close pt-10 {hideDrawer ? 'opacity-0' : ''} overflow-hidden duration-150" in:fade={{delay: 150}} out:fade>
+    <div class="pl-8 col-span-4 flex gap-16 h-64 prevent-close pt-10 {hideDrawer ? 'opacity-20' : ''} overflow-hidden duration-150" in:fade={{delay: 150}} out:fade>
         
         <!-- why -->
         {#if openDrawer == "why"}
             <div class="flex flex-col gap-1 prevent-close">
-                <h3 class="font-serif italic mb-3 text-xl prevent-close text-white/70">Compare Nautica</h3>
+                <h3 class="font-serif italic mb-3 prevent-close text-white/70">Compare Nautica</h3>
                 {#each COMPARISONS as l}
-                    <a href="{l.url}" class="hover:underline prevent-close text-lg font-semibold">{l.name}</a>
+                    <a href="{l.url}" class="hover:underline prevent-close text-xl font-semibold">{l.name}</a>
                 {/each}
             </div>
            
              <div class="prevent-close max-w-64">
-                <h3 class="font-serif italic mb-3 text-lg prevent-close text-white/70">See Nautica in Action</h3>
+                <h3 class="font-serif italic mb-3 prevent-close text-white/70">See Nautica in Action</h3>
                 <img src="/brand/registry.svg" alt="" class="h-12 prevent-close">
                 <p class="mt-3 text-sm prevent-close italic text-chart-2">Our Package registry is built on top of Nautica itself.</p>
 
@@ -160,7 +185,7 @@
             </div>
 
             <div class="prevent-close">
-                <h3 class="font-serif italic mb-3 text-lg prevent-close text-white/70">Let's talk numbers</h3>
+                <h3 class="font-serif italic mb-3 prevent-close text-white/70">Let's talk numbers</h3>
 
                 <div class="flex gap-3 border-b border-chart-4 p-2 prevent-close">
                     <p class="prevent-close font-bold w-24">Nautica 3</p>
@@ -182,26 +207,53 @@
                     <p class="w-24 prevent-close">132ms ping</p>
                     <p class="prevent-close italic">96% Slower</p>
                 </div>
-                
-                
-                
 
             </div>
             
         <!-- product -->
         {:else if openDrawer == "product"}
             <div class="flex flex-col gap-1 prevent-close">
-                <h3 class="font-serif italic mb-3 text-xl prevent-close">Use Cases</h3>
+                <h3 class="font-serif italic mb-3 prevent-close text-white/70">Use Cases</h3>
                 {#each USE_CASES as l}
-                    <a href="{l.url}" class="hover:underline prevent-close text-lg">{l.name}</a>
+                    <a href="{l.url}" class="hover:underline prevent-close text-xl">{l.name}</a>
                 {/each}
             </div>
 
+            <div class="flex flex-col gap-1 prevent-close">
+                <h3 class="font-serif italic mb-3 prevent-close text-white/70">Features</h3>
+                <div class="flex gap-8 prevent-close">
+                    <div class="flex flex-col gap-1 prevent-close">
+                        {#each FEATURES_1 as l}
+                            <a href="{l.url}" class="hover:underline prevent-close text-xl">{l.name}</a>
+                        {/each}
+                    </div>
+                    <div class="flex flex-col gap-1 prevent-close">
+                        {#each FEATURES_2 as l}
+                            <a href="{l.url}" class="hover:underline prevent-close text-xl">{l.name}</a>
+                        {/each}
+                    </div>
+                </div>
+            </div>
+
+            
+        {:else if openDrawer == "devs"}
+            <div class="flex flex-col gap-1 prevent-close">
+                <h3 class="font-serif italic mb-3 prevent-close text-white/70">Resources</h3>
+                {#each RESOURCES as l}
+                    <a href="{l.url}" class="hover:underline prevent-close text-xl">{l.name}</a>
+                {/each}
+            </div>
+
+            <div class="flex flex-col gap-1 prevent-close">
+                <h3 class="font-serif italic mb-3 prevent-close text-white/70">Quick References</h3>
+                {#each QUICK_REF as l}
+                    <a href="{l.url}" class="hover:underline prevent-close text-xl">{l.name}</a>
+                {/each}
+            </div>
         {/if}
     </div>
 
         
-    <div class="col-span-1 prevent-close"></div>
 </div>
 
 <div class="z-10 fixed top-0 left-0 w-screen h-screen bg-black/50 backdrop-blur-sm" in:fade out:fade={{duration: 150}}></div>
